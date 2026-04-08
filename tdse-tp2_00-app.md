@@ -46,3 +46,14 @@ Usar `LOGGER_INFO()` dentro de la rutina de una tarea (es decir, el bloque de c�
 1.  **En `g_app_runtime_us`:** La macro `LOGGER_INFO` usa la función `snprintf` y realiza comunicación por semihosting (pausando la ejecución para hablar con la PC a través del debugger). Esto es un proceso increíblemente lento desde la perspectiva del microcontrolador. Al estar dentro de la tarea, el contador de ciclos (DWT) no se detiene. Por ende, el tiempo de la tarea (`LET`) dará un salto gigantesco, lo que a su vez causará que el total `g_app_runtime_us` se dispare a valores muy elevados.
 2.  **En `task_dta_list[index].WCET`:** Como el tiempo de la última ejecución (`LET`) aumentó artificialmente por culpa del envío de caracteres a la consola, el sistema registrará este valor como un "nuevo peor tiempo". En consecuencia, el `WCET` quedará manchado y reflejará el tiempo de transmisión del log, perdiendo por completo la capacidad de mostrarte el verdadero tiempo del peor caso de la lógica de tu máquina de estados o algoritmo.
 3.  **En el comportamiento del sistema (Interrupciones):** Además del tiempo perdido, `LOGGER_INFO` incluye instrucciones de ensamblador para deshabilitar las interrupciones (`__asm("CPSID i")`) mientras procesa e imprime. Si el log es muy extenso, el sistema estará sordo (incluso ante el SysTick) por periodos de tiempo no deseados, afectando la determinismo del sistema.
+
+<img width="512" height="228" alt="image" src="https://github.com/user-attachments/assets/28936d7a-84b9-4e45-9e3c-92be795f65e4" />
+
+
+NOE: Cantidad de ejecuciones (veces).
+
+LET: Microsegundos (µs).
+
+BCET: Microsegundos (µs).
+
+WCET: Microsegundos (µs).
