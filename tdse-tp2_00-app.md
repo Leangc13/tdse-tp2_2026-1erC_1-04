@@ -49,6 +49,7 @@ Usar `LOGGER_INFO()` dentro de la rutina de una tarea (es decir, el bloque de c√
 
 <img width="512" height="228" alt="image" src="https://github.com/user-attachments/assets/28936d7a-84b9-4e45-9e3c-92be795f65e4" />
 
+cambia el numero de ejecuciones NOE en cada ejecuci√≥n.
 
 NOE: Cantidad de ejecuciones (veces).
 
