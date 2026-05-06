@@ -98,7 +98,7 @@ void task_actuator_init(void *parameters)
 		state = ST_LED_OFF;
 		p_task_actuator_dta->state = state;
 
-		event = EV_LED_IDLE;
+		event = EV_LED_OFF;
 		p_task_actuator_dta->event = event;
 
 		b_event = false;
@@ -156,7 +156,7 @@ void task_actuator_statechart(uint32_t index)
                 HAL_GPIO_WritePin(p_task_actuator_cfg->gpio_port,
                                   p_task_actuator_cfg->pin,
                                   p_task_actuator_cfg->led_on);
-                p_task_actuator_dta->state = ST_LED_ON;
+                p_task_actuator_dta->state = ST_LED_BLINK;
             }
 
             break;
@@ -178,7 +178,7 @@ void task_actuator_statechart(uint32_t index)
                 HAL_GPIO_WritePin(p_task_actuator_cfg->gpio_port,
                                   p_task_actuator_cfg->pin,
                                   p_task_actuator_cfg->led_off);
-                p_task_actuator_dta->state = ST_LED_OFF;
+                p_task_actuator_dta->state = ST_LED_BLINK;
             }
             break;
 
@@ -210,22 +210,22 @@ void task_actuator_statechart(uint32_t index)
                 p_task_actuator_dta->tick = DEL_LED_MAX;
                 HAL_GPIO_TogglePin(p_task_actuator_cfg->gpio_port,
                                    p_task_actuator_cfg->pin);
-                p_task_actuator_dta->state = !(p_task_actuator_dta->state);
+//                p_task_actuator_dta->state = !(p_task_actuator_dta->state);
             }
 
             break;
 
-        default:
-
-            p_task_actuator_dta->tick  = DEL_LED_MIN;
-            p_task_actuator_dta->state = ST_LED_OFF;
-            p_task_actuator_dta->event = EV_LED_OFF;
-            p_task_actuator_dta->flag  = false;
-            HAL_GPIO_WritePin(p_task_actuator_cfg->gpio_port,
-                              p_task_actuator_cfg->pin,
-                              p_task_actuator_cfg->led_off);
-
-            break;
+//        default:
+//
+//            p_task_actuator_dta->tick  = DEL_LED_MIN;
+//            p_task_actuator_dta->state = ST_LED_OFF;
+//            p_task_actuator_dta->event = EV_LED_OFF;
+//            p_task_actuator_dta->flag  = false;
+//            HAL_GPIO_WritePin(p_task_actuator_cfg->gpio_port,
+//                              p_task_actuator_cfg->pin,
+//                              p_task_actuator_cfg->led_off);
+//
+//            break;
     }
 }
 /********************** end of file ******************************************/

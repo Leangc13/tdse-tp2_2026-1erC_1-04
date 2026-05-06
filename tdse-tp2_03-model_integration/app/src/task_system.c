@@ -171,8 +171,8 @@ void task_system_normal_statechart(void)
 	            {
 	                p_task_system_dta->flag  = false;
 	                p_task_system_dta->tick  = DEL_SYS_MAX;
-	                put_event_task_actuator(EV_LED_BARRIER_OPEN_BLINK,  ID_LED_BARRIER_OPEN);
-	                put_event_task_actuator(EV_LED_BARRIER_CLOSE_OFF,   ID_LED_BARRIER_CLOSE);
+	                put_event_task_actuator(EV_LED_BLINK,  ID_LED_BARRIER_OPEN);
+	                put_event_task_actuator(EV_LED_OFF,   ID_LED_BARRIER_CLOSE);
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_BARRIER_OPENED;
 	            }
 
@@ -188,7 +188,7 @@ void task_system_normal_statechart(void)
 	            /* Transición: [tick == 0] → ST_SYS_WAIT_FOR_CAR_LEAVES */
 	            else
 	            {
-	                put_event_task_actuator(EV_LED_BARRIER_OPEN_ON,  ID_LED_BARRIER_OPEN);
+	                put_event_task_actuator(EV_LED_ON,  ID_LED_BARRIER_OPEN);
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_CAR_LEAVES;
 	            }
 
@@ -201,8 +201,8 @@ void task_system_normal_statechart(void)
 	            {
 	                p_task_system_dta->flag  = false;
 	                p_task_system_dta->tick  = DEL_SYS_MAX;
-	                put_event_task_actuator(EV_LED_BARRIER_OPEN_OFF,    ID_LED_BARRIER_OPEN);
-	                put_event_task_actuator(EV_LED_BARRIER_CLOSE_BLINK, ID_LED_BARRIER_CLOSE);
+	                put_event_task_actuator(EV_LED_OFF,    ID_LED_BARRIER_OPEN);
+	                put_event_task_actuator(EV_LED_BLINK, ID_LED_BARRIER_CLOSE);
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_BARRIER_CLOSED;
 	            }
 
@@ -218,7 +218,7 @@ void task_system_normal_statechart(void)
 	            /* Transición: [tick == 0] → ST_SYS_WAIT_FOR_CAR_ARRIEVE */
 	            else
 	            {
-	                put_event_task_actuator(EV_LED_BARRIER_CLOSE_ON, ID_LED_BARRIER_CLOSE);
+	                put_event_task_actuator(EV_LED_ON, ID_LED_BARRIER_CLOSE);
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_CAR_ARRIEVE;
 	            }
 
@@ -231,8 +231,8 @@ void task_system_normal_statechart(void)
 	            p_task_system_dta->event = EV_SYS_IDLE;
 	            p_task_system_dta->flag  = false;
 	            /* Acciones de entrada al estado inicial */
-	            put_event_task_actuator(EV_LED_BARRIER_OPEN_OFF, ID_LED_BARRIER_OPEN);
-	            put_event_task_actuator(EV_LED_BARRIER_CLOSE_ON, ID_LED_BARRIER_CLOSE);
+	            put_event_task_actuator(EV_LED_OFF, ID_LED_BARRIER_OPEN);
+	            put_event_task_actuator(EV_LED_ON, ID_LED_BARRIER_CLOSE);
 
 	            break;
 	    }

@@ -48,12 +48,6 @@ extern "C" {
 /* Events to excite Task Actuator */
 typedef enum task_actuator_ev {EV_LED_IDLE,
 							   EV_LED_ACTIVE,
-							   EV_LED_BARRIER_OPEN_BLINK,
-							   EV_LED_BARRIER_CLOSE_OFF,
-							   EV_LED_BARRIER_OPEN_ON,
-							   EV_LED_BARRIER_OPEN_OFF,
-							   EV_LED_BARRIER_CLOSE_BLINK,
-							   EV_LED_BARRIER_CLOSE_ON,
 							   EV_LED_OFF,
 							   EV_LED_ON,
 							   EV_LED_BLINK
