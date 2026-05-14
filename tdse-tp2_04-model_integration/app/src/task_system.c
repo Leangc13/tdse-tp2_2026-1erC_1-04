@@ -100,7 +100,7 @@ void task_system_init(void *parameters)
 		p_task_system_dta = &task_system_dta_list[index];
 
 		/* Init & Print out: Task execution FSM */
-		state = ST_SYS_IDLE;
+		state = ST_SYS_WAIT_FOR_CAR_ARRIEVE;
 		p_task_system_dta->state = state;
 
 		event = EV_SYS_IDLE;
@@ -160,6 +160,7 @@ void task_system_normal_statechart(void)
 	            {
 	                p_task_system_dta->flag = false;
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_BUTTON_PRESSED;
+//	                put_event_task_actuator(EV_LED_ON,  ID_LED_A);
 	            }
 
 	            break;
@@ -171,8 +172,9 @@ void task_system_normal_statechart(void)
 	            {
 	                p_task_system_dta->flag  = false;
 	                p_task_system_dta->tick  = DEL_SYS_MAX;
-	                put_event_task_actuator(EV_LED_BLINK,  ID_LED_BARRIER_OPEN);
-	                put_event_task_actuator(EV_LED_OFF,   ID_LED_BARRIER_CLOSE);
+	                put_event_task_actuator(EV_LED_BLINK,  ID_LED_A);
+//	                put_event_task_actuator(EV_LED_BLINK,  ID_LED_BARRIER_OPEN);
+//	                put_event_task_actuator(EV_LED_OFF,   ID_LED_BARRIER_CLOSE);
 	                p_task_system_dta->state = ST_SYS_WAIT_FOR_BARRIER_OPENED;
 	            }
 
@@ -224,17 +226,17 @@ void task_system_normal_statechart(void)
 
 	            break;
 
-	        default:
-
-	            p_task_system_dta->tick  = DEL_SYS_MIN;
-	            p_task_system_dta->state = ST_SYS_WAIT_FOR_CAR_ARRIEVE;
-	            p_task_system_dta->event = EV_SYS_IDLE;
-	            p_task_system_dta->flag  = false;
-	            /* Acciones de entrada al estado inicial */
-	            put_event_task_actuator(EV_LED_OFF, ID_LED_BARRIER_OPEN);
-	            put_event_task_actuator(EV_LED_ON, ID_LED_BARRIER_CLOSE);
-
-	            break;
+//	        default:
+//
+//	            p_task_system_dta->tick  = DEL_SYS_MIN;
+//	            p_task_system_dta->state = ST_SYS_WAIT_FOR_CAR_ARRIEVE;
+//	            p_task_system_dta->event = EV_SYS_IDLE;
+//	            p_task_system_dta->flag  = false;
+//	            /* Acciones de entrada al estado inicial */
+//	            put_event_task_actuator(EV_LED_OFF, ID_LED_BARRIER_OPEN);
+//	            put_event_task_actuator(EV_LED_ON, ID_LED_BARRIER_CLOSE);
+//
+//	            break;
 	    }
 }
 

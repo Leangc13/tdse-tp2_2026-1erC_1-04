@@ -57,6 +57,7 @@
 /********************** internal data declaration ****************************/
 const task_actuator_cfg_t task_actuator_cfg_list[] = {
 	{ID_LED_A,  LED_A_PORT,  LED_A_PIN, LED_A_ON,  LED_A_OFF, DEL_LED_MAX}
+//	ID_LED_A = LD2
 };
 
 task_actuator_dta_t task_actuator_dta_list[ACTUATOR_DTA_QTY];
@@ -98,10 +99,10 @@ void task_actuator_init(void *parameters)
 		state = ST_LED_OFF;
 		p_task_actuator_dta->state = state;
 
-		event = EV_LED_OFF;
+		event = EV_LED_OFF; //off
 		p_task_actuator_dta->event = event;
 
-		b_event = false;
+		b_event = false; //ORIGINAL FALSE
 		p_task_actuator_dta->flag = b_event;
 
 		LOGGER_INFO(" ");

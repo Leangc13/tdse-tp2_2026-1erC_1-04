@@ -53,9 +53,7 @@ typedef enum task_system_ev { EV_SYS_IDLE,
 	    EV_SYS_SENSOR_COIL} task_system_ev_t;
 
 /* State of Task System */
-typedef enum task_system_st {ST_SYS_IDLE,
-							 ST_SYS_ACTIVE,
-							 ST_SYS_WAIT_FOR_CAR_ARRIEVE,
+typedef enum task_system_st {ST_SYS_WAIT_FOR_CAR_ARRIEVE,
 							ST_SYS_WAIT_FOR_BUTTON_PRESSED,
 							     ST_SYS_WAIT_FOR_BARRIER_OPENED,
 							     ST_SYS_WAIT_FOR_CAR_LEAVES,
